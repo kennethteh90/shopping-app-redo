@@ -7,6 +7,16 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    .navbar
+      .container
+        .navlink = link_to 'Home', products_path
+        - Category.all.each do |category|
+          .navlink = link_to category.name.capitalize, category_path(category)
+        - if admin_signed_in?
+          h4 Admin
+          .navlink = link_to 'Categories', admin_categories_path
+          .navlink = link_to 'Products', admin_products_path
+
     - flash.each do |name, msg|
        = content_tag :div, msg, class: name
     = yield
