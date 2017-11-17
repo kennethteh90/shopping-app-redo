@@ -1,0 +1,13 @@
+h1.jumbotron Admin | Products
+
+.container
+  .row
+    = link_to 'Add Product', new_admin_product_path
+    .col-12.card
+      table.table
+        thead
+          th Name
+          th Description
+          th Price
+        tbody
+        = render partial: "admin_product", collection: @products

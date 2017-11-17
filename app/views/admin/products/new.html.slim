@@ -1,0 +1,13 @@
+h1.jumbotron Add a Product
+
+.container
+  = simple_form_for [:admin, @product], class: "form-horizontal" do |f|
+    = f.input :name
+    = f.input :description
+    = f.input :price
+  
+    = f.association :categories, collection: Category.all, as: :check_boxes, include_hidden: false
+
+    = f.button :submit
+
+  = link_to 'Back to Product List', admin_products_path
