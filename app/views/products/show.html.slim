@@ -4,5 +4,6 @@ h1.jumbotron #{ @product.name.capitalize }
     .card-body
       p = @product.description
       p <small> SGD </small> #{ @product.price }
+      = link_to 'Add to Cart', add_to_cart_path(@product), method: :put
     .card-footer
       = link_to 'Back to Product List', products_path
