@@ -1,0 +1,29 @@
+h1.jumbotron Your Shopping Cart!
+
+.container
+  .row
+    table.table
+      thead
+        th Name
+        th Price
+        th Quantity
+        th Subtotal
+      tbody
+        - @cart_products_with_qty.each do |array|
+          - product = array[0]
+          - qty = array[1]
+          tr
+            td.align-middle = product.name
+            td.align-middle = product.price
+            td.align-middle = qty
+            td.align-middle = product.price * qty.to_i
+            td.align-middle
+              = link_to '+', add_to_cart_path(product), method: :put, class: "btn"
+              = link_to '-', remove_one_cart_path(product), method: :put, class: "btn"
+              = link_to 'Remove', remove_from_cart_path(product), method: :put, class: "btn btn-danger"
+
+        tr.font-weight-bold
+          td colspan="3"
+            h5 Total
+          td
+            h5 = @cart_total
