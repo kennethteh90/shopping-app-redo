@@ -12,11 +12,13 @@ Rails.application.routes.draw do
     put 'remove/:product_id', to: 'carts#remove', as: :remove_from
     put 'remove_one/:product_id', to: 'carts#removeone', as: :remove_one
   end
+  resources :transactions, only: [:new, :create]
 
   namespace :admin do
     root to: 'products#index'
     resources :products, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :orders, only: [:index]
   end
 
 end
