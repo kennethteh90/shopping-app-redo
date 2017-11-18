@@ -4,6 +4,8 @@ html
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
     title ShoppingAppRedo
     = csrf_meta_tags
+    = include_gon
+    script src="https://js.braintreegateway.com/v2/braintree.js"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
@@ -21,6 +23,7 @@ html
           h4 Admin
           .navlink = link_to 'Categories', admin_categories_path
           .navlink = link_to 'Products', admin_products_path
+          .navlink = link_to 'Orders', admin_orders_path
 
     - flash.each do |name, msg|
        = content_tag :div, msg, class: name
